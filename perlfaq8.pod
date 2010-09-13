@@ -523,12 +523,12 @@ L<perlfunc/syscall>.
 
 =head2 How can I do an atexit() or setjmp()/longjmp()? (Exception handling)
 
-Release 5 of Perl added the END block, which can be used to simulate
-C<atexit()>.  Each package's END block is called when the program or
-thread ends (see L<perlmod> manpage for more details).
+You can use the C<END> block to simulate C<atexit()>. Each package's
+C<END> block is called when the program or thread ends See L<perlmod>
+manpage for more details about C<END> blocks.
 
-For example, you can use this to make sure your filter program
-managed to finish its output without filling up the disk:
+For example, you can use this to make sure your filter program managed
+to finish its output without filling up the disk:
 
 	END {
 		close(STDOUT) || die "stdout close failed: $!";
@@ -540,16 +540,16 @@ though, so if you use C<END> blocks you should also use
 	use sigtrap qw(die normal-signals);
 
 Perl's exception-handling mechanism is its C<eval()> operator.  You
-can use C<eval()> as C<setjmp> and C<die()> as C<longjmp>.  For
+can use C<eval()> as C<setjmp> and C<die()> as C<longjmp>. For
 details of this, see the section on signals, especially the time-out
 handler for a blocking C<flock()> in L<perlipc/"Signals"> or the
-section on "Signals" in the Camel Book.
+section on "Signals" in I<Programming Perl>.
 
-If exception handling is all you're interested in, try the
-C<exceptions.pl> library (part of the standard perl distribution).
+If exception handling is all you're interested in, use one of the
+many CPAN modules that handle exceptions, such as C<Try::Tiny>.
 
-If you want the atexit() syntax (and an rmexit() as well), try the
-AtExit module available from CPAN.
+If you want the C<atexit()> syntax (and an C<rmexit()> as well), try the
+C<AtExit> module available from CPAN.
 
 =head2 Why doesn't my sockets program work under System V (Solaris)?  What does the error message "Protocol not supported" mean?
 
@@ -1265,6 +1265,14 @@ See the entry for C<use> in L<perlfunc> for more details.
 
 When you build modules, tell Perl where to install the modules.
 
+If you want to install modules for your own use, the easiest way might
+be C<local::lib>, which you can download from CPAN. It sets various
+installation settings for you, and uses those same settings within
+your programs.
+
+If you want more flexibility, you need to configure your CPAN client
+for your particular situation.
+
 For C<Makefile.PL>-based distributions, use the INSTALL_BASE option
 when generating Makefiles:
 
@@ -1342,6 +1350,14 @@ you can then use to construct the right library path:
 
 	use FindBin qw($Bin);
 
+You can also use C<local::lib> to do much of the same thing. Install
+modules using C<local::lib>'s settings then use the module in your
+program:
+
+	 use local::lib; # sets up a local lib at ~/perl5
+
+See the C<local::lib> documentation for more details.
+
 =head2 How do I add a directory to my include path (@INC) at runtime?
 
 Here are the suggested ways of modifying your include path, including
@@ -1349,23 +1365,29 @@ environment variables, run-time switches, and in-code statements:
 
 =over 4
 
-=item the PERLLIB environment variable
+=item the C<PERLLIB> environment variable
 
 	$ export PERLLIB=/path/to/my/dir
 	$ perl program.pl
 
-=item the PERL5LIB environment variable
+=item the C<PERL5LIB> environment variable
 
 	$ export PERL5LIB=/path/to/my/dir
 	$ perl program.pl
 
-=item the perl -Idir command line flag
+=item the C<perl -Idir> command line flag
 
 	$ perl -I/path/to/my/dir program.pl
 
-=item the use lib pragma:
+=item the C<lib> pragma:
 
 	use lib "$ENV{HOME}/myown_perllib";
+
+=item the C<local::lib> module:
+
+	use local::lib;
+
+	use local::lib "~/myown_perllib";
 
 =back
 

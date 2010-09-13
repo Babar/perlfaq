@@ -49,3 +49,6 @@ runtest:
 
 sync:
 	cp ../perl/pod/perlfaq* .
+	
+sha1:
+	@( cd ../perl; git log --pretty=format:"%H" -n 1 )
