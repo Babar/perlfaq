@@ -61,17 +61,16 @@ The perlfaq is an evolving document and you can read the latest version
 at http://faq.perl.org/ . The perlfaq-workers periodically post extracts
 of the latest perlfaq to comp.lang.perl.misc.
 
-You can view the source tree at https://github.com/briandfoy/perlfaq
-(which is outside of the main Perl source tree). The git repository
-notes all changes to the FAQ and holds the latest version of the
-working documents and may vary significantly from the version
-distributed with the latest version of Perl. Check the repository
-before sending your corrections.
+The perlfaq documents are in the perl source tree (see
+L<perlrepository>). The git repository notes all changes to the FAQ and
+holds the latest version of the working documents and may vary
+significantly from the version distributed with the latest version of
+Perl. Check the repository before sending your corrections.
 
 =head2 How to contribute to the perlfaq
 
-You can mail corrections, additions, and suggestions to C<<
-<perlfaq-workers AT perl DOT org> >>. The perlfaq volunteers use this
+You can mail corrections, additions, and suggestions to
+C<< <perlfaq-workers AT perl DOT org> >>. The perlfaq volunteers use this
 address to coordinate their efforts and track the perlfaq development.
 They appreciate your contributions to the FAQ but do not have time to
 provide individual help, so don't use this address to ask FAQs.
@@ -81,11 +80,8 @@ every 6 hours (or so), and the community of volunteers reviews and
 updates the answers. If you'd like to help review and update the
 answers, check out comp.lang.perl.misc.
 
-The perlfaq documents are in the perl source tree (see
-perlrepository). The git repository notes all changes to the FAQ and
-holds the latest version of the working documents and may vary
-significantly from the version distributed with the latest version of
-Perl. Check the repository before sending your corrections.
+You can also fork the perl repository, make your changes, and send them
+to Perl 5 Porters. See L<perlrepository>.
 
 =head2 What will happen if you mail your Perl programming problems to the authors?
 

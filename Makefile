@@ -23,7 +23,7 @@ echo:
 	@ echo $(FILES)
 
 perlfaq.pod: $(FILES) bin/perlfaq_toc.pl
-	${PERL} ${TOC_PL} > perlfaq.pod
+	${PERL} ${TOC_PL} > ../perl/pod/perlfaq.pod
 
 checkurls: 
 	${PERL} ${CHECK_URLS} $(FILES)
@@ -49,6 +49,7 @@ runtest:
 
 sync:
 	cp ../perl/pod/perlfaq* .
+	@ touch $@
 	
 sha1:
 	@( cd ../perl; git log --pretty=format:"%H" -n 1 )
