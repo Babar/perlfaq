@@ -270,9 +270,14 @@ You can also send comments to perlfaq-workers@perl.org .
 
 =head1 AUTHORS
 
-The FAQ was last updated March 31, 2010.
+The FAQ was last updated April 7, 2011.
 
 Its primary author was Simon Cozens. It's currently maintained by Rafael
 Garcia-Suarez and James Laver.
+
+=head1 COPYRIGHT
+
+This document is available under the same terms as Perl itself. See
+http://dev.perl.org/licenses/ for more details.
 
 =cut
