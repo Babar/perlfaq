@@ -629,7 +629,7 @@ name, or the domain name.
 	my $host = hostfqdn();
 
 The C<Sys::Hostname> module, included in the standard distribution since
-perl5.6, can also get the hostname.
+perl5, can also get the hostname.
 
 	use Sys::Hostname;
 
